@@ -219,20 +219,21 @@ $delayTime: 0.4s;
           left: 0;
           height: 100%;
           width: 100%;
-          animation-duration: .5s;
+          animation-duration: .7s;
           animation-fill-mode: forwards;
 
           &:nth-child(1) {
-            &[data-active="false"] {
-              animation-name: slideDown;
+            &[data-active="true"] {
+              animation-name: clipRectHide;
             }
           }
           &:nth-child(2) {
-            transform: translate(0, 100%);
             z-index: 1;
+            animation-delay: .3s;
 
-            &[data-active="false"] {
-              animation-name: slideUp;
+            &[data-active="true"] {
+              clip-path: inset(100% 0 0 0);
+              animation-name: clipRectShow;
             }
           }
         }
@@ -306,7 +307,7 @@ $delayTime: 0.4s;
     top: -50px;
     left: 50%;
     transform: translate(-50%, -50px);
-    z-index: 12;
+    z-index: 16;
     display: flex;
     justify-content: center;
     width: 50px;
@@ -419,6 +420,28 @@ $delayTime: 0.4s;
         }
       }
     }
+  }
+}
+
+@keyframes clipRectHide {
+  0% {
+    clip-path: inset(0 0 0 0);
+    z-index: 10;
+  }
+  100% {
+    clip-path: inset(100% 0 0 0);
+    z-index: 10;
+  }
+}
+
+@keyframes clipRectShow {
+  0% {
+    clip-path: inset(100% 0 0 0);
+    z-index: 10;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    z-index: 10;
   }
 }
 

@@ -31,13 +31,11 @@ export function ArtistsSlider() {
     setActiveAnimation(prev => !prev);
 
     setTimeout(() => {
-
       setActiveAnimation(prev => !prev);
-      
+
       setactiveSliderIndex(prev =>
         prev >= spotifyData.artists.length - 1 ? 0 : prev + 1
       );
-      
     }, 500);
   };
 
@@ -56,20 +54,24 @@ export function ArtistsSlider() {
       />
       <div className="album-card">
         <div className="img-holder">
-          <img
-            src={`${
-              spotifyData?.artists[activeSliderIndex]?.featuredTrack.album
-                .images[0].url
-            }`}
-            data-active={activeAnimation}
-            alt=""
-            srcset=""
-          />
+          {true && (
             <img
-            src={`${
-              spotifyData?.artists[activeSliderIndex + 1]?.featuredTrack.album
-                .images[0].url
-            }`}
+              src={`${
+                spotifyData?.artists[activeSliderIndex - 1]?.featuredTrack.album
+                  .images[0].url
+              }`}
+              style={{
+                display: spotifyData?.artists[activeSliderIndex - 1]
+                  ? "block"
+                  : "none"
+              }}
+              data-active={activeAnimation}
+              alt=""
+              srcset=""
+            />
+          )}
+          <img
+            src={`${spotifyData?.artists[activeSliderIndex]?.featuredTrack.album.images[0].url}`}
             data-active={activeAnimation}
             alt=""
             srcset=""
