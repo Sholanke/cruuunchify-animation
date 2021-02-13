@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Value Sans Pro";
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+
+body {
+  background: #070705;
+  color: #fff;
+  overflow: hidden;
+}
+
+img {
+  object-position: center;
+  object-fit: cover;
+}
+
+.hv-zoom {
+  &:hover {
+    transform: scale(1.2);
+  }
+}

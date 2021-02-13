@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-Regular.eot');
+    src: local('Value Sans Pro Regular'), local('ValueSansPro-Regular'),
+        url('ValueSansPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-Regular.woff2') format('woff2'),
+        url('ValueSansPro-Regular.woff') format('woff'),
+        url('ValueSansPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-MediumItalic.eot');
+    src: local('Value Sans Pro Medium Italic'), local('ValueSansPro-MediumItalic'),
+        url('ValueSansPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-MediumItalic.woff2') format('woff2'),
+        url('ValueSansPro-MediumItalic.woff') format('woff'),
+        url('ValueSansPro-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-Italic.eot');
+    src: local('Value Sans Pro Italic'), local('ValueSansPro-Italic'),
+        url('ValueSansPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-Italic.woff2') format('woff2'),
+        url('ValueSansPro-Italic.woff') format('woff'),
+        url('ValueSansPro-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-Bold.eot');
+    src: local('Value Sans Pro Bold'), local('ValueSansPro-Bold'),
+        url('ValueSansPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-Bold.woff2') format('woff2'),
+        url('ValueSansPro-Bold.woff') format('woff'),
+        url('ValueSansPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-BlackItalic.eot');
+    src: local('Value Sans Pro Black Italic'), local('ValueSansPro-BlackItalic'),
+        url('ValueSansPro-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-BlackItalic.woff2') format('woff2'),
+        url('ValueSansPro-BlackItalic.woff') format('woff'),
+        url('ValueSansPro-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-Black.eot');
+    src: local('Value Sans Pro Black'), local('ValueSansPro-Black'),
+        url('ValueSansPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-Black.woff2') format('woff2'),
+        url('ValueSansPro-Black.woff') format('woff'),
+        url('ValueSansPro-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-Medium.eot');
+    src: local('Value Sans Pro Medium'), local('ValueSansPro-Medium'),
+        url('ValueSansPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-Medium.woff2') format('woff2'),
+        url('ValueSansPro-Medium.woff') format('woff'),
+        url('ValueSansPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Value Sans Pro';
+    src: url('ValueSansPro-BoldItalic.eot');
+    src: local('Value Sans Pro Bold Italic'), local('ValueSansPro-BoldItalic'),
+        url('ValueSansPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('ValueSansPro-BoldItalic.woff2') format('woff2'),
+        url('ValueSansPro-BoldItalic.woff') format('woff'),
+        url('ValueSansPro-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+

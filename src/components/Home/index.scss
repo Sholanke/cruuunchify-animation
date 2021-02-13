@@ -1,0 +1,524 @@
+$delayTime: 0.4s;
+
+.home-container {
+  min-width: 2000px;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  transition: 1s ease;
+  top: 0;
+  left: 0;
+}
+
+.home-section {
+  //hide
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transition: 0.5s ease;
+  transition-delay: 0.5s;
+
+  //show
+  &[data-is-active="true"] {
+    opacity: 1;
+    pointer-events: unset;
+    transition-delay: $delayTime + 0.1 !important;
+  }
+}
+
+.home-hero {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  ._right,
+  ._left {
+    flex: 1;
+  }
+  &__dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 153px;
+    height: 246px;
+    transform: translate(-50%, -24%);
+
+    > span {
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 100vh;
+
+      @for $i from 0 to 17 {
+        &:nth-child(#{$i}) {
+          transition: 0.4s;
+          background: #1db954;
+          animation-name: bounceOut;
+          opacity: 0;
+          animation-duration: 0.3s;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+  }
+  .mv-down {
+    transition: $delayTime ease-out;
+    transform: translateY(100%);
+    display: block;
+    opacity: 0;
+  }
+  ._left {
+    position: relative;
+
+    h1 {
+      overflow: hidden;
+      font-size: 55px;
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -2.4px;
+
+      * {
+        line-height: 1;
+      }
+    }
+    ._description {
+      transform: translateY(40px);
+      // transition-delay: 0.1s;
+      p {
+        font-size: 18px;
+        line-height: 2;
+        max-width: 450px;
+        margin: 40px 0;
+        opacity: 0.8;
+      }
+    }
+  }
+  ._right {
+    position: relative;
+
+    .main-image {
+      height: 450px;
+      width: 360px;
+      margin-left: 40px;
+      border-radius: 10px;
+      position: relative;
+      // overflow: hidden;
+
+      &__item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        background-color: rgb(26, 26, 26);
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+
+        animation-duration: 1.1s;
+        animation-fill-mode: forwards;
+        background-repeat: no-repeat;
+        overflow: hidden;
+
+        .bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          filter: brightness(0.6);
+
+          animation-duration: 1.7s;
+          background-repeat: no-repeat;
+        }
+
+        .info {
+          padding: 40px 20px;
+          position: absolute;
+          bottom: 0;
+
+          .fadeup {
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            animation-delay: 0.2s;
+          }
+          .name {
+            font-weight: 600;
+            font-size: 40px;
+            max-width: 300px;
+          }
+          .tags {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+
+            .tag {
+              padding: 10px 15px;
+              border-radius: 100vh;
+              background: #ffffff1a;
+              color: #fff;
+              font-size: 14px;
+
+              &.num {
+                color: #070705;
+                background: #fff;
+                font-weight: 500;
+                line-height: 1;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+        &.active {
+          animation-name: showImage;
+
+          .fadeup {
+            animation-name: fadeUp;
+          }
+          .bg {
+            animation-name: grow;
+          }
+        }
+      }
+    }
+
+    .album-card {
+      position: absolute;
+      right: -40px;
+      z-index: 12;
+      max-width: 200px;
+      width: 100%;
+      top: -40px;
+      transform: translate(50%, 0);
+
+      .img-holder {
+        position: relative;
+        height: 170px;
+        overflow: hidden;
+        transform: translate(0, 2px);
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          animation-duration: .5s;
+          animation-fill-mode: forwards;
+
+          &:nth-child(1) {
+            &[data-active="false"] {
+              animation-name: slideDown;
+            }
+          }
+          &:nth-child(2) {
+            transform: translate(0, 100%);
+            z-index: 1;
+
+            &[data-active="false"] {
+              animation-name: slideUp;
+            }
+          }
+        }
+      }
+      .slider-card {
+        border-radius: 0 0 10px 10px;
+        z-index: 12;
+        position: relative;
+      }
+    }
+    .slider-card {
+      width: 100%;
+      background: #1d1d1d;
+      padding: 45px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      p {
+        line-height: 1;
+        span {
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 160px;
+
+          &:nth-child(1) {
+            font-size: 13px;
+            color: #ffffff80;
+            margin-bottom: 2px;
+          }
+          &:nth-child(2) {
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+        &:nth-child(1) {
+          position: absolute;
+          span {
+            opacity: 0;
+          }
+
+          &[data-active="true"] {
+            span {
+              animation-name: bounceOut;
+              animation-duration: 0.5s;
+              animation-fill-mode: forwards;
+            }
+          }
+        }
+        &:nth-child(2) {
+          position: absolute;
+
+          &[data-active="true"] {
+            span {
+              opacity: 0;
+              animation-name: fadeUp--small;
+              animation-duration: 0.5s;
+              animation-fill-mode: forwards;
+              animation-delay: 0.3s;
+            }
+          }
+        }
+      }
+    }
+  }
+  .picks-of-week {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%, -50px);
+    z-index: 12;
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #1db954;
+    overflow: hidden;
+    transition: 0.5s ease;
+    border-radius: 100vh;
+
+    * {
+      color: #070705;
+    }
+
+    .note {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      transition: 0.4s ease;
+
+      path {
+        transition: 0.5s ease;
+        fill: rgb(0, 0, 0) !important;
+      }
+    }
+
+    &:hover {
+      width: 340px;
+      height: 340px;
+      background: #fff;
+
+      .note {
+        transform: translate(-50%, 140px) scale(15);
+
+        path {
+          fill: #1db95413 !important;
+        }
+      }
+
+      .content {
+        .stagger-item {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          transition: 0.4s ease;
+        }
+      }
+    }
+    .content {
+      text-align: center;
+
+      .image {
+        height: 120px;
+        width: 120px;
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+        border-radius: 8px;
+        margin-bottom: 8px;
+      }
+
+      img.stagger-item {
+        transform: translateY(100%) scale(1.5);
+        transition: 0.5s ease;
+        opacity: 0.4;
+      }
+      p.stagger-item,
+      .play-btn {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.2s ease;
+      }
+      .play-btn {
+        height: 50px;
+        width: 50px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #1db954;
+        border-radius: 100vh;
+      }
+      p {
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #070705e0;
+      }
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+        max-width: 150px;
+        line-height: 1.4;
+        opacity: 1;
+      }
+    }
+  }
+
+  &[data-is-active="true"] {
+    .mv-down {
+      transition-delay: $delayTime + 0.1;
+      transform: translateY(0) !important;
+      opacity: 1 !important;
+    }
+    .home-hero__dots {
+      > span {
+        animation-name: bounceIn !important;
+
+        @for $i from 0 to 17 {
+          &:nth-child(#{$i}) {
+            animation-delay: ($i * 0.05) + $delayTime;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(80%);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(80%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes showImage {
+  0% {
+    clip-path: circle(0% at 100% 100%);
+    z-index: 10;
+  }
+  100% {
+    clip-path: circle(141.4% at 100% 100%);
+    z-index: 10;
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeUp--small {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translate(-10px, -10px);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(1px, 1px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
