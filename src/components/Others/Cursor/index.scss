@@ -14,17 +14,15 @@
   left: -35px;
   pointer-events: none;
 
-  &[data-hover-state="true"] {
-    .app-cursor {
-      height: 14px;
-      width: 14px;
-      border: 2px solid #fff;
-      background: rgba(255, 255, 255, 0.479);
-    }
-    .app-cursor--border {
-      width: 0px;
-      height: 0px;
-    }
+  .app-cursor[data-hover-state="true"] {
+    height: 14px;
+    width: 14px;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.479);
+  }
+  .app-cursor--border[data-hover-state="true"] {
+    width: 0px;
+    height: 0px;
   }
 }
 
