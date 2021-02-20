@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { initStagger } from "../../../utils/animation";
-import { spotifyData } from "../../../utils/artists";
-
-console.log(spotifyData);
+import { spotifyData as spotifyDataDefault } from "../../../utils/artists";
 
 export default function HomeHero({ active, title, children, right }) {
   return (
@@ -25,7 +23,8 @@ export default function HomeHero({ active, title, children, right }) {
   );
 }
 
-export function ArtistsSlider() {
+export function ArtistsSlider({ spotifyData }) {
+  spotifyData = spotifyData || spotifyDataDefault;
   const [activeAnimation, setActiveAnimation] = useState(true);
   const [activeSliderIndex, setactiveSliderIndex] = useState(0);
 
@@ -40,6 +39,10 @@ export function ArtistsSlider() {
       );
     }, 500);
   };
+  const prevArtist =
+    spotifyData?.artists[activeSliderIndex - 1] ||
+    spotifyData?.artists[spotifyData?.artists?.length - 1];
+  const currentArtist = spotifyData?.artists[activeSliderIndex];
 
   const popularityGIF = arg => {
     if (arg >= 70) {
@@ -66,11 +69,6 @@ export function ArtistsSlider() {
       goToNext();
     }, 6000);
   }, []);
-
-  const prevArtist =
-    spotifyData?.artists[activeSliderIndex - 1] ||
-    spotifyData?.artists[spotifyData?.artists?.length - 1];
-  const currentArtist = spotifyData?.artists[activeSliderIndex];
 
   return (
     <div className="main-image">

@@ -8,11 +8,13 @@ import {
 import HomeHero from "./HomeHero/HomeHero";
 import "./index.scss";
 import { ArtistsSlider, PickOfWeek } from "../Home/HomeHero/HomeHero";
+import getArtists from "../../getArtists";
 
 const sections = ["hero", "we-create"];
 
 export default function Index() {
   const [counter, setCounter] = useState(0);
+  const [artists, setArtists] = useState();
   const homeRef = useRef();
 
   useEffect(() => {
@@ -25,11 +27,13 @@ export default function Index() {
 
     window.addEventListener("wheel", e => {
       // uncomment this line for onwheel animation...
-      // wheelEventHandeler(e);
+      wheelEventHandeler(e);
     });
+
+    getArtists().then(setArtists);
   }, []);
 
-  return (
+  return artists ? (
     <div className="home-container" ref={homeRef}>
       <HomeSection
         isActive={counter === 0}
@@ -37,7 +41,7 @@ export default function Index() {
         right={
           <>
             <PickOfWeek />
-            <ArtistsSlider />
+            <ArtistsSlider spotifyData={artists} />
           </>
         }
       >
@@ -57,6 +61,8 @@ export default function Index() {
         </p>
       </HomeSection>
     </div>
+  ) : (
+    "Loading"
   );
 }
 
