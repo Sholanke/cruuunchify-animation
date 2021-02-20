@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { initStagger } from "../../../utils/animation";
 import { spotifyData as spotifyDataDefault } from "../../../utils/artists";
 
@@ -28,7 +28,7 @@ export function ArtistsSlider({ spotifyData }) {
   const [activeAnimation, setActiveAnimation] = useState(true);
   const [activeSliderIndex, setactiveSliderIndex] = useState(0);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setActiveAnimation(prev => !prev);
 
     setTimeout(() => {
@@ -37,7 +37,8 @@ export function ArtistsSlider({ spotifyData }) {
         prev >= spotifyData.artists.length - 1 ? 0 : prev + 1
       );
     }, 500);
-  };
+  }, [spotifyData]);
+  
   const prevArtist =
     spotifyData?.artists[activeSliderIndex - 1] ||
     spotifyData?.artists[spotifyData?.artists?.length - 1];
@@ -67,7 +68,7 @@ export function ArtistsSlider({ spotifyData }) {
     setInterval(() => {
       goToNext();
     }, 6000);
-  }, []);
+  }, [goToNext]);
 
   return (
     <>
