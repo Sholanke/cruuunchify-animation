@@ -33,7 +33,7 @@ export default function Index() {
     <div className="home-container" ref={homeRef}>
       <HomeSection
         isActive={counter === 0}
-        title={["Make the most", "of Spotify."]}
+        title={["Make the Most", "of Spotify."]}
         right={
           <>
             <PickOfWeek />
@@ -42,8 +42,8 @@ export default function Index() {
         }
       >
         <p>
-          ❤ We partner with global brands and emerging businesses to create
-          exciting and meaningful experiences, whether digital or non-digital.
+          With Spotify, it’s easy to find the right music or podcast for every
+          moment – on your phone, your computer, your tablet and more.
         </p>
       </HomeSection>
       <HomeSection

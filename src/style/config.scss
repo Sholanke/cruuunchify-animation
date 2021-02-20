@@ -6,10 +6,17 @@
   line-height: 1.4;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  background: #070705;
+  background-image: linear-gradient(#071b00, #070705);
   color: #fff;
   overflow: hidden;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 img {

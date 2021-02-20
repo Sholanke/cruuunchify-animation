@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { initStagger } from "../../../utils/animation";
 import { spotifyData } from "../../../utils/artists";
 
+console.log(spotifyData);
+
 export default function HomeHero({ active, title, children, right }) {
   return (
     <div className="home-hero" data-is-active={active}>
@@ -39,31 +41,48 @@ export function ArtistsSlider() {
     }, 500);
   };
 
+  const popularityGIF = arg => {
+    if (arg >= 70) {
+      return `url('https://cdn.dribbble.com/users/527197/screenshots/9515248/skull-fire-dribbble.gif')`;
+    } else if (arg >= 50) {
+      return `url('https://cdn.dribbble.com/users/720114/screenshots/3361407/rocket_3.gif')`;
+    } else if (arg) {
+      return `url('https://cdn.dribbble.com/users/844087/screenshots/3025821/eyetom_ccccccc.gif')`;
+    }
+  };
+
+  const popularityGrade = arg => {
+    if (arg >= 70) {
+      return `Blazing Hot`;
+    } else if (arg >= 50) {
+      return `Well Known`;
+    } else if (arg) {
+      return `Lowkey`;
+    }
+  };
+
   useEffect(() => {
     setInterval(() => {
       goToNext();
     }, 6000);
   }, []);
 
+  const prevArtist =
+    spotifyData?.artists[activeSliderIndex - 1] ||
+    spotifyData?.artists[spotifyData?.artists?.length - 1];
+  const currentArtist = spotifyData?.artists[activeSliderIndex];
+
   return (
     <div className="main-image">
-      <SliderItem artist={spotifyData.artists[activeSliderIndex - 1] || null} />
-      <SliderItem
-        artist={spotifyData.artists[activeSliderIndex]}
-        active={activeAnimation}
-      />
+      <SliderItem artist={prevArtist} />
+      <SliderItem artist={currentArtist} active={activeAnimation} />
       <div className="album-card">
         <div className="img-holder">
           {true && (
             <img
-              src={`${
-                spotifyData?.artists[activeSliderIndex - 1]?.featuredTrack.album
-                  .images[0].url
-              }`}
+              src={`${prevArtist?.featuredTrack.album.images[0].url}`}
               style={{
-                display: spotifyData?.artists[activeSliderIndex - 1]
-                  ? "block"
-                  : "none"
+                display: prevArtist ? "block" : "none"
               }}
               data-active={activeAnimation}
               alt=""
@@ -71,7 +90,7 @@ export function ArtistsSlider() {
             />
           )}
           <img
-            src={`${spotifyData?.artists[activeSliderIndex]?.featuredTrack.album.images[0].url}`}
+            src={`${currentArtist?.featuredTrack.album.images[0].url}`}
             data-active={activeAnimation}
             alt=""
             srcset=""
@@ -81,21 +100,40 @@ export function ArtistsSlider() {
         <div className="slider-card">
           <p data-active={activeAnimation}>
             <span>Featured Track</span>
-            <span>
-              {
-                spotifyData?.artists[activeSliderIndex - 1]?.featuredTrack.album
-                  .name
-              }
-            </span>
+            <span>{prevArtist?.featuredTrack.album.name}</span>
           </p>
           <p data-active={activeAnimation}>
             <span>Featured Track</span>
-            <span>
-              {
-                spotifyData?.artists[activeSliderIndex]?.featuredTrack.album
-                  .name
-              }
-            </span>
+            <span>{currentArtist?.featuredTrack.album.name}</span>
+          </p>
+        </div>
+      </div>
+
+      <div className="album-card popularity-status">
+        <div className="slider-card">
+          <p data-active={activeAnimation}>
+            <span
+              className="icon-holder"
+              style={{
+                backgroundImage: popularityGIF(prevArtist?.popularity)
+              }}
+            ></span>
+            <div>
+              <span>Popularity</span>
+              <span>{popularityGrade(prevArtist?.popularity)}</span>
+            </div>
+          </p>
+          <p data-active={activeAnimation}>
+            <span
+              className="icon-holder"
+              style={{
+                backgroundImage: popularityGIF(currentArtist?.popularity)
+              }}
+            ></span>
+            <div>
+              <span>Popularity</span>
+              <span>{popularityGrade(currentArtist?.popularity)}</span>
+            </div>
           </p>
         </div>
       </div>

@@ -86,7 +86,7 @@ $delayTime: 0.4s;
 
     h1 {
       overflow: hidden;
-      font-size: 55px;
+      font-size: 65px;
       line-height: 1;
       margin-bottom: 10px;
       letter-spacing: -2.4px;
@@ -201,12 +201,38 @@ $delayTime: 0.4s;
     .album-card {
       position: absolute;
       right: -40px;
+      top: -40px;
       z-index: 12;
       max-width: 200px;
       width: 100%;
-      top: -40px;
       transform: translate(50%, 0);
 
+      &.popularity-status {
+        top: 250px;
+        right: 0;
+        transform: translate(90%, 0);
+        max-width: 200px;
+
+        .slider-card {
+          border-radius: 10px;
+
+          p {
+            display: flex !important;
+            align-items: flex-start;
+
+            .icon-holder {
+              margin-right: 10px;
+              flex-shrink: 0;
+              height: 40px;
+              width: 40px;
+              border-radius: 100vh;
+              background: rgb(12, 12, 12);
+              background-position: center;
+              background-size: cover;
+            }
+          }
+        }
+      }
       .img-holder {
         position: relative;
         height: 170px;
@@ -219,7 +245,7 @@ $delayTime: 0.4s;
           left: 0;
           height: 100%;
           width: 100%;
-          animation-duration: .7s;
+          animation-duration: 0.6s;
           animation-fill-mode: forwards;
 
           &:nth-child(1) {
@@ -229,10 +255,11 @@ $delayTime: 0.4s;
           }
           &:nth-child(2) {
             z-index: 1;
-            animation-delay: .3s;
+            animation-delay: 0.2s;
 
             &[data-active="true"] {
-              clip-path: inset(100% 0 0 0);
+              // clip-path: inset(100% 0 0 0);
+              transform: translate(0, 100%);
               animation-name: clipRectShow;
             }
           }
@@ -246,7 +273,7 @@ $delayTime: 0.4s;
     }
     .slider-card {
       width: 100%;
-      background: #1d1d1d;
+      background: #1a1a1a;
       padding: 45px 20px;
       border-radius: 10px;
       display: flex;
@@ -255,12 +282,13 @@ $delayTime: 0.4s;
 
       p {
         line-height: 1;
+
         span {
           display: block;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          width: 160px;
+          max-width: 160px;
 
           &:nth-child(1) {
             font-size: 13px;
@@ -274,6 +302,7 @@ $delayTime: 0.4s;
         }
         &:nth-child(1) {
           position: absolute;
+
           span {
             opacity: 0;
           }
@@ -295,7 +324,11 @@ $delayTime: 0.4s;
               animation-name: fadeUp--small;
               animation-duration: 0.5s;
               animation-fill-mode: forwards;
-              animation-delay: 0.3s;
+              animation-delay: 0.5s;
+
+              &.icon-holder {
+                animation-delay: 0.6s;
+              }
             }
           }
         }
@@ -425,22 +458,26 @@ $delayTime: 0.4s;
 
 @keyframes clipRectHide {
   0% {
-    clip-path: inset(0 0 0 0);
+    // clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
     z-index: 10;
   }
   100% {
-    clip-path: inset(100% 0 0 0);
+    // clip-path: inset(100% 0 0 0);
+    transform: translate(0, 100%);
     z-index: 10;
   }
 }
 
 @keyframes clipRectShow {
   0% {
-    clip-path: inset(100% 0 0 0);
+    // clip-path: inset(100% 0 0 0);
+    transform: translate(0, 100%);
     z-index: 10;
   }
   100% {
-    clip-path: inset(0 0 0 0);
+    // clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
     z-index: 10;
   }
 }
