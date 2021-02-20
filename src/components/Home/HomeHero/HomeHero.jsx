@@ -170,7 +170,7 @@ export function PickOfWeek() {
 function SliderItem({ active, artist }) {
   return (
     artist && (
-      <div className={`main-image__item ${active ? "active" : ""}`}>
+      <div className={`main-image__item cur-pointer ${active ? "active" : ""}`}>
         {!!artist?.images?.[0].url && (
           <img src={artist?.images?.[0].url} alt="" className="bg" />
         )}

@@ -1,0 +1,50 @@
+* {
+  cursor: none;
+}
+
+.cursor-container {
+  position: fixed;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  top: -35px;
+  left: -35px;
+  pointer-events: none;
+
+  &[data-hover-state="true"] {
+    .app-cursor {
+      height: 14px;
+      width: 14px;
+      border: 2px solid #fff;
+      background: rgba(255, 255, 255, 0.479);
+    }
+    .app-cursor--border {
+      width: 0px;
+      height: 0px;
+    }
+  }
+}
+
+.app-cursor {
+  height: 6px;
+  width: 6px;
+  display: block;
+  background: rgb(255, 255, 255);
+  border-radius: 100vh;
+  box-shadow: 0 0 20px rgb(0, 26, 14);
+  position: absolute;
+  transition: 0.5s ease;
+}
+
+.app-cursor--border {
+  height: 70px;
+  width: 70px;
+  display: block;
+  border-radius: 100vh;
+  border: 1px solid rgba(255, 255, 255, 0.192);
+  transition: 0.5s ease;
+  position: absolute;
+}
