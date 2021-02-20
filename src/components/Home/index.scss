@@ -198,6 +198,28 @@ $delayTime: 0.4s;
           }
         }
       }
+      .absolute-image {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        background: transparent !important;
+        filter: blur(50px);
+
+        &.active {
+          animation-name: fadeIn !important;
+        }
+
+        img {
+          bottom: -10vh;
+          right: 0;
+          position: absolute;
+          width: 50vw;
+          height: 50vh;
+          filter: brightness(0.2);
+          // transform: translate(-50%, -50%);
+        }
+      }
     }
 
     .album-card {
@@ -458,6 +480,15 @@ $delayTime: 0.4s;
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes clipRectHide {
   0% {
     // clip-path: inset(0 0 0 0);
@@ -550,6 +581,7 @@ $delayTime: 0.4s;
     transform: translateY(0);
   }
 }
+
 @keyframes fadeUp--small {
   0% {
     opacity: 0;

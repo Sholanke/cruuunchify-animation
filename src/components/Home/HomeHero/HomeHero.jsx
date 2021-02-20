@@ -33,7 +33,6 @@ export function ArtistsSlider({ spotifyData }) {
 
     setTimeout(() => {
       setActiveAnimation(prev => !prev);
-
       setactiveSliderIndex(prev =>
         prev >= spotifyData.artists.length - 1 ? 0 : prev + 1
       );
@@ -71,14 +70,14 @@ export function ArtistsSlider({ spotifyData }) {
   }, []);
 
   return (
-    <div className="main-image">
-      <SliderItem artist={prevArtist} />
-      <SliderItem artist={currentArtist} active={activeAnimation} />
-      <div className="album-card">
-        <div className="img-holder">
-          {true && (
+    <>
+      <div className="main-image">
+        <SliderItem artist={prevArtist} />
+        <SliderItem artist={currentArtist} active={activeAnimation} />
+        <div className="album-card">
+          <div className="img-holder">
             <img
-              src={`${prevArtist?.featuredTrack.album.images[0].url}`}
+              src={prevArtist?.featuredTrack.album.images[0].url}
               style={{
                 display: prevArtist ? "block" : "none"
               }}
@@ -86,56 +85,57 @@ export function ArtistsSlider({ spotifyData }) {
               alt=""
               srcset=""
             />
-          )}
-          <img
-            src={`${currentArtist?.featuredTrack.album.images[0].url}`}
-            data-active={activeAnimation}
-            alt=""
-            srcset=""
-          />
+
+            <img
+              src={currentArtist?.featuredTrack.album.images[0].url}
+              data-active={activeAnimation}
+              alt=""
+              srcset=""
+            />
+          </div>
+
+          <div className="slider-card">
+            <p data-active={activeAnimation}>
+              <span>Featured Track</span>
+              <span>{prevArtist?.featuredTrack.album.name}</span>
+            </p>
+            <p data-active={activeAnimation}>
+              <span>Featured Track</span>
+              <span>{currentArtist?.featuredTrack.album.name}</span>
+            </p>
+          </div>
         </div>
 
-        <div className="slider-card">
-          <p data-active={activeAnimation}>
-            <span>Featured Track</span>
-            <span>{prevArtist?.featuredTrack.album.name}</span>
-          </p>
-          <p data-active={activeAnimation}>
-            <span>Featured Track</span>
-            <span>{currentArtist?.featuredTrack.album.name}</span>
-          </p>
+        <div className="album-card popularity-status">
+          <div className="slider-card">
+            <p data-active={activeAnimation}>
+              <span
+                className="icon-holder"
+                style={{
+                  backgroundImage: popularityGIF(prevArtist?.popularity)
+                }}
+              ></span>
+              <div>
+                <span>Popularity</span>
+                <span>{popularityGrade(prevArtist?.popularity)}</span>
+              </div>
+            </p>
+            <p data-active={activeAnimation}>
+              <span
+                className="icon-holder"
+                style={{
+                  backgroundImage: popularityGIF(currentArtist?.popularity)
+                }}
+              ></span>
+              <div>
+                <span>Popularity</span>
+                <span>{popularityGrade(currentArtist?.popularity)}</span>
+              </div>
+            </p>
+          </div>
         </div>
       </div>
-
-      <div className="album-card popularity-status">
-        <div className="slider-card">
-          <p data-active={activeAnimation}>
-            <span
-              className="icon-holder"
-              style={{
-                backgroundImage: popularityGIF(prevArtist?.popularity)
-              }}
-            ></span>
-            <div>
-              <span>Popularity</span>
-              <span>{popularityGrade(prevArtist?.popularity)}</span>
-            </div>
-          </p>
-          <p data-active={activeAnimation}>
-            <span
-              className="icon-holder"
-              style={{
-                backgroundImage: popularityGIF(currentArtist?.popularity)
-              }}
-            ></span>
-            <div>
-              <span>Popularity</span>
-              <span>{popularityGrade(currentArtist?.popularity)}</span>
-            </div>
-          </p>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -170,25 +170,38 @@ export function PickOfWeek() {
 function SliderItem({ active, artist }) {
   return (
     artist && (
-      <div className={`main-image__item cur-pointer ${active ? "active" : ""}`}>
-        {!!artist?.images?.[0].url && (
-          <img src={artist?.images?.[0].url} alt="" className="bg" />
-        )}
-        <div className="info">
-          <p className="name fadeup">{artist.name}</p>
-
-          {!!artist.genres?.length && (
-            <div className="tags">
-              <div className="tag fadeup">{artist.genres[0]}</div>
-              {artist.genres.length > 1 && (
-                <div className="tag num fadeup">
-                  +{artist.genres.length - 1}
-                </div>
-              )}
-            </div>
-          )}
+      <>
+        <div
+          className={`absolute-image main-image__item  ${
+            active ? "active" : ""
+          }`}
+          data-active={active}
+        >
+          <img src={artist?.images?.[2].url} alt="" srcset="" />
         </div>
-      </div>
+
+        <div
+          className={`main-image__item cur-pointer ${active ? "active" : ""}`}
+        >
+          {!!artist?.images?.[0].url && (
+            <img src={artist?.images?.[0].url} alt="" className="bg" />
+          )}
+
+          <div className="info">
+            <p className="name fadeup">{artist.name}</p>
+            {!!artist.genres?.length && (
+              <div className="tags">
+                <div className="tag fadeup">{artist.genres[0]}</div>
+                {artist.genres.length > 1 && (
+                  <div className="tag num fadeup">
+                    +{artist.genres.length - 1}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </>
     )
   );
 }
