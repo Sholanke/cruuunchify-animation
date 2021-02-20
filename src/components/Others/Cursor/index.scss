@@ -36,7 +36,6 @@
   border-radius: 100vh;
   box-shadow: 0 0 20px rgb(0, 26, 14);
   position: absolute;
-  transition: 0.5s ease;
 }
 
 .app-cursor--border {
@@ -45,6 +44,6 @@
   display: block;
   border-radius: 100vh;
   border: 1px solid rgba(255, 255, 255, 0.192);
-  transition: 0.5s ease;
+  transition: 0.3s ease;
   position: absolute;
 }

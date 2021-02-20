@@ -28,9 +28,9 @@ export default function Cursor() {
   };
   return (
     <>
-      <div className="cursor-container" {...props}>
-        <span className="app-cursor"></span>
-        <span className="app-cursor--border"></span>
+      <div className="cursor-container">
+        <span className="app-cursor" {...props}></span>
+        <span className="app-cursor--border" {...props}></span>
       </div>
     </>
   );
