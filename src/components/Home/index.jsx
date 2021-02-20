@@ -24,7 +24,8 @@ export default function Index() {
     });
 
     window.addEventListener("wheel", e => {
-      wheelEventHandeler(e);
+      // uncomment this line for onwheel animation...
+      // wheelEventHandeler(e);
     });
   }, []);
 
@@ -32,7 +33,7 @@ export default function Index() {
     <div className="home-container" ref={homeRef}>
       <HomeSection
         isActive={counter === 0}
-        title={["We’re a website", "design and", "development agency."]}
+        title={["Make the most", "of Spotify."]}
         right={
           <>
             <PickOfWeek />
