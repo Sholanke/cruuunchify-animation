@@ -78,7 +78,7 @@ export function ArtistsSlider({ spotifyData }) {
         <div className="album-card">
           <div className="img-holder">
             <img
-              src={prevArtist?.featuredTrack.album.images[0].url}
+              src={prevArtist?.featuredTrack.album.images[1].url}
               style={{
                 display: prevArtist ? "block" : "none"
               }}
@@ -88,7 +88,7 @@ export function ArtistsSlider({ spotifyData }) {
             />
 
             <img
-              src={currentArtist?.featuredTrack.album.images[0].url}
+              src={currentArtist?.featuredTrack.album.images[1].url}
               data-active={activeAnimation}
               alt=""
               srcset=""

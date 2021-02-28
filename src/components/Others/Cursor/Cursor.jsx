@@ -23,15 +23,15 @@ export default function Cursor() {
   }, []);
 
   const props = {
-    style: { transform: `translate(${mousePos.x}px, ${mousePos.y}px)` },
+    // style: { transform: `translate(${mousePos.x}px, ${mousePos.y}px)` },
     "data-hover-state": hoverState
   };
   return (
     <>
-      <div className="cursor-container" {...props}>
+      {/* <div className="cursor-container" {...props}>
         <span className="app-cursor"></span>
         <span className="app-cursor--border"></span>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -10,6 +10,7 @@ import "./index.scss";
 import { ArtistsSlider, PickOfWeek } from "../Home/HomeHero/HomeHero";
 import getArtists from "../../getArtists";
 import Cursor from "../Others/Cursor/Cursor";
+import HomeBitmoji from "./HomeBitmoji/HomeBitmoji";
 
 const sections = ["hero", "we-create"];
 
@@ -51,9 +52,15 @@ export default function Index() {
           moment – on your phone, your computer, your tablet and more.
         </p>
       </HomeSection>
-      <HomeSection isActive={counter === 1} title={["Who built this Clone?"]}>
+      <HomeSection
+        isActive={counter === 1}
+        title={["Who built this Clone?"]}
+        right={<HomeBitmoji />}
+      >
         <p>
-        Sholanke Olamide is a Frontend Engineer that focuses on improving the quality of front-end code by paying close attention to minor details with the help of grade A softwares and developer tools/processes.
+          Sholanke Olamide is a Frontend Engineer that focuses on improving the
+          quality of front-end code by paying close attention to minor details
+          with the help of grade A softwares and developer tools/processes.
         </p>
       </HomeSection>
     </div>
